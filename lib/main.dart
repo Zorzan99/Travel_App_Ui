@@ -50,24 +50,80 @@ class TravelApp extends StatefulWidget {
 }
 
 class _TravelAppState extends State<TravelApp> {
+  bool isOnborading = true;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xFFF5EDDC),
-      body: Row(
-        children: [
-          SideBar(
-            heigth: height,
-            width: width,
-            navigator: widget.navigator,
-          ),
-          Expanded(
-            child: widget.child,
-          ),
-        ],
-      ),
+      body: isOnborading
+          ? _buildOnboarding(context)
+          : Row(
+              children: [
+                SideBar(
+                  heigth: height,
+                  width: width,
+                  navigator: widget.navigator,
+                ),
+                Expanded(
+                  child: widget.child,
+                ),
+              ],
+            ),
     );
   }
+
+  Container _buildOnboarding(context) => Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                'assets/images/background.jpg',
+              ),
+              fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.45, bottom: MediaQuery.of(context).size.height * 0.1, left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Viagens incríveis para Itália',
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontSize: 65, fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              const Spacer(),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    padding: EdgeInsets.zero,
+                    elevation: 0.0,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isOnborading = false;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_circle_right_outlined,
+                        size: 50,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Explore agora',
+                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                              color: Colors.white,
+                            ),
+                      ),
+                    ],
+                  ))
+            ],
+          ),
+        ),
+      );
 }
