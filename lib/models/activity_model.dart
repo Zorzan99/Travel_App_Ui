@@ -23,7 +23,7 @@ class Activity {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat quis nunc in ultrices. Nullam feugiat in massa vitae placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam sem urna, venenatis vitae orci vitae, faucibus volutpat urna.',
       imageUrl: 'https://images.unsplash.com/photo-1564671546498-09a366692274?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
       price: 39.99,
-      rating: 4,
+      rating: 5,
     ),
     Activity(
       id: '2',
